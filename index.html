@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#fff0f6"><meta name="description" content="A tiny interactive love experience made with care.">
+  <title>Make a Little Love Experience 💗</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <div class="sparkle-layer" id="sparkleLayer" aria-hidden="true"></div>
+  <header class="topbar"><div class="brand"><span class="brand-mark">♥</span><span>little love note</span></div><button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false"><span id="soundIcon">♫</span><span id="soundLabel">Sound off</span></button></header>
+  <main>
+
+    <section class="screen active" id="builderScreen" aria-labelledby="builderTitle">
+      <div class="builder-card glass-card">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> CREATE A LITTLE MOMENT</div>
+        <div class="builder-hero-icon">💌</div>
+        <p class="script-kicker">a surprise made by you</p>
+        <h1 id="builderTitle">Make it <em>personal.</em></h1>
+        <p class="subcopy">Create your own little love experience, then share its private link with someone special.</p>
+        <form id="builderForm" class="builder-form">
+          <div class="builder-grid">
+            <label>From<input name="senderName" maxlength="32" placeholder="Your name"></label>
+            <label>To<input name="recipientName" maxlength="32" placeholder="Their name"></label>
+          </div>
+          <label>Your question<input name="question" maxlength="90" value="Do you love me?"></label>
+          <label>Choose a theme<select name="theme"><option value="blush">Blush Romance</option><option value="lavender">Lavender Dream</option><option value="midnight">Midnight Love</option><option value="sunset">Peach Sunset</option></select></label>
+          <label>Love letter<textarea name="letter" rows="4">I just wanted to remind you how special you are. You make ordinary moments feel magical, and I'm really glad you're in my world. 💗</textarea></label>
+          <label>Final surprise message<textarea name="finalMessage" rows="2">You just made someone's whole universe brighter. 💗</textarea></label>
+          <label>Background music URL <span class="optional">(optional — direct MP3/audio link)</span><input name="musicUrl" type="url" placeholder="https://example.com/song.mp3"></label>
+          <label>Celebration video URL <span class="optional">(optional — direct MP4 link)</span><input name="videoUrl" type="url" placeholder="https://example.com/celebration.mp4"></label>
+          <button class="primary-button start-button" type="submit">Create my shareable link <span>↗</span></button>
+        </form>
+        <div class="share-result hidden" id="shareResult"><p>YOUR PERSONALIZED LINK IS READY ✨</p><div class="share-link-row"><input id="shareLink" readonly aria-label="Your shareable link"><button class="primary-button" id="copyLink" type="button">Copy link</button></div><button class="secondary-button" id="previewLink" type="button">Preview experience ↗</button><small>Publish this project on GitHub Pages first. Then generated links will open your personalized experience.</small></div>
+      </div>
+    </section>
+    <section class="screen" id="welcomeScreen" aria-labelledby="welcomeTitle">
+      <div class="welcome-card glass-card">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> A tiny moment, just for you</div>
+        <div class="hero-bear" aria-hidden="true"><div class="bear-halo"></div><div class="bear-face">🧸<span class="bear-heart">♥</span></div></div>
+        <p class="script-kicker">psst... someone has a question</p>
+        <h1 id="welcomeTitle">Hey<span class="name-highlight" id="welcomeName">you</span>!<br><em>Ready for something sweet?</em></h1>
+        <p class="subcopy">A little interactive surprise has been made especially for you.</p>
+        <div class="recipient-intro">
+          <p class="subcopy" id="welcomeFrom">A little surprise has been made especially for you.</p>
+          <button class="primary-button start-button" id="openSurpriseButton" type="button">Open my surprise <span>→</span></button>
+        </div>
+        <p class="tiny-note">made with a little extra affection <span>♡</span></p>
+      </div>
+    </section>
+
+    <section class="screen" id="questionScreen" aria-labelledby="questionTitle">
+      <div class="question-card glass-card">
+        <div class="step-pill"><span>01</span> THE BIG QUESTION</div>
+        <div class="question-bear" id="questionBear" aria-hidden="true"><div class="bear-shadow"></div><div class="bear-emoji">🐻‍❄️</div><div class="bear-cheek cheek-left"></div><div class="bear-cheek cheek-right"></div><div class="bear-floating-heart">♥</div></div>
+        <p class="script-kicker" id="questionKicker">I've been meaning to ask...</p>
+        <h1 id="questionTitle">Do you love me<span class="question-mark">?</span></h1>
+        <p class="subcopy" id="questionSubcopy">Be honest... my tiny heart is waiting. 💗</p>
+        <div class="button-arena" id="buttonArena">
+          <button class="primary-button yes-button" id="yesButton" type="button">Yes, of course! <span>♥</span></button>
+          <button class="no-button" id="noButton" type="button">No 🙈</button>
+        </div>
+        <p class="attempt-message" id="attemptMessage" aria-live="polite">Choose wisely. The teddy is watching.</p>
+        <p class="tiny-note">there is only one right answer (just kidding... maybe) <span>♡</span></p>
+      </div>
+    </section>
+
+    <section class="screen" id="celebrationScreen" aria-labelledby="celebrationTitle">
+      <div class="celebration-card glass-card">
+        <div class="confetti-heart" aria-hidden="true">💖</div><div class="step-pill success-pill"><span>02</span> THE BEST ANSWER</div>
+        <p class="script-kicker">I knew it!</p><h1 id="celebrationTitle">You said yes<span>!</span></h1>
+        <p class="subcopy" id="celebrationCopy">Somebody is smiling very, very hard right now.</p>
+        <div class="video-frame" id="videoFrame"><video id="celebrationVideo" playsinline controls preload="metadata"><source src="cute love gif.mp4" type="video/mp4">Your browser does not support video playback.</video><div class="video-placeholder" id="videoPlaceholder"><span>♡</span><p>Your little celebration moment</p><small>If the video doesn't load, check that the MP4 is beside index.html.</small></div></div>
+        <button class="secondary-button" id="letterButton" type="button">There's a little letter for you <span>✉</span></button>
+      </div>
+    </section>
+
+    <section class="screen" id="letterScreen" aria-labelledby="letterTitle">
+      <div class="letter-card glass-card">
+        <div class="step-pill"><span>03</span> A FEW WORDS</div><div class="envelope-wrap" id="envelopeWrap"><div class="envelope"><div class="envelope-flap"></div><div class="envelope-heart">♥</div></div></div>
+        <p class="script-kicker">written just for you</p><h1 id="letterTitle">A little love letter</h1>
+        <div class="letter-paper"><p id="letterText"></p><p class="letter-signoff" id="letterSignoff">With love, always ♡</p></div>
+        <button class="primary-button" id="giftButton" type="button">One last surprise <span>🎁</span></button>
+      </div>
+    </section>
+
+    <section class="screen" id="giftScreen" aria-labelledby="giftTitle">
+      <div class="gift-card glass-card"><div class="step-pill"><span>04</span> JUST FOR YOU</div><p class="script-kicker">a tiny present</p><h1 id="giftTitle">Something to keep</h1>
+        <button class="gift-box" id="giftBox" type="button" aria-label="Open your surprise gift"><span class="gift-lid"></span><span class="gift-ribbon"></span><span class="gift-bow">♡</span><span class="gift-base"></span><span class="gift-sparkle">✦</span></button>
+        <p class="subcopy" id="giftHint">Tap the gift to unwrap your surprise.</p><div class="final-message hidden" id="finalMessage"><div class="final-heart">💗</div><h2 id="finalMessageText"></h2><p id="finalSignature"></p><button class="secondary-button" id="replayButton" type="button">Experience it again ↻</button></div>
+      </div>
+    </section>
+  </main>
+  <audio id="backgroundMusic" loop preload="none"></audio>
+  <footer class="footer"><span>♡</span> a little love goes a long way <span>♡</span></footer>
+  <script src="config.js"></script><script src="script.js"></script>
+</body></html>
